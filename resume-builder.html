@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Fill our simple online resume form and create a professional CV in minutes with Ready Resume. Free, fast, and recruiter-friendly.">
+<title>Build Your Resume | Ready Resume</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<style>
+body{
+    font-family: Cambria, serif;
+    background-color: rgba(60, 60, 231, 0.821);
+    margin:0; padding:0;
+}
+#formContainer {
+    max-width: 42rem; margin:6rem auto; padding:2rem; background:white; border-radius:6px;
+}
+.section{
+    display:none;
+    margin-bottom:2rem;
+}
+.section.active{
+    display:block;
+}
+input, textarea{
+    width: 80%; padding:0.5rem; margin-top:0.5rem; border-radius:4px; border:1px solid #ccc;
+}
+textarea{min-height:5rem;}
+button{
+    margin-top:1rem; padding:0.6rem 1rem; font-size:16px; border:none; border-radius:5px;
+    background-color: rgb(60,60,231); color:white; cursor:pointer;
+}
+button:hover{background-color: rgba(12,12,70,0.85);}
+#navDots{display:flex; justify-content:center; gap:0.5rem; margin-top:1rem;}
+.dot{width:1.8rem; height:1.8rem; border-radius:50%; background:#ccc; cursor:pointer;}
+.dot.active{background: rgb(60,60,231);}
+#resumeCont{
+    display:none; max-width:42rem; margin:2rem auto; background:white; padding:1rem; border-radius:6px;
+}
+#backEdit{margin-top:1rem;}
+@media (max-width:600px){
+    body{padding:1rem;}
+    input,textarea{width:100%; font-size:16px;}
+}
+#bottom{
+  margin-top: 12rem;
+}
+#contact a{
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+<div id="formContainer">
+
+    <div class="section active" id="secName">
+        <label for="nameInput">Full Name</label><br>
+        <input type="text" id="nameInput" placeholder="e.g., Damian Wayne"><br>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secPhone">
+        <label for="phoneInput">Phone Number</label><br>
+        <input type="text" id="phoneInput" placeholder="e.g., +1234567890"><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secEmail">
+        <label for="emailInput">Email</label><br>
+        <input type="email" id="emailInput" placeholder="e.g., damwayne54@example.com"><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secSummary">
+        <label for="summaryInput">Professional Summary</label><br>
+        <textarea id="summaryInput" placeholder="Write a short summary about yourself"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secWork">
+        <label for="workInput">Work Experience</label><br>
+        <textarea id="workInput" placeholder="One job per line"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secEducation">
+        <label for="eduInput">Education</label><br>
+        <textarea id="eduInput" placeholder="One certificate/degree per line"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secSkills">
+        <label for="skillInput">Skills</label><br>
+        <textarea id="skillInput" placeholder="One skill per line"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secLangs">
+        <label for="langInput">Languages</label><br>
+        <textarea id="langInput" placeholder="One language per line"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button class="nextBtn">Next</button>
+    </div>
+
+    <div class="section" id="secRefs">
+        <label for="refInput">References</label><br>
+        <textarea id="refInput" placeholder="One reference per line"></textarea><br>
+        <button class="backBtn">Back</button>
+        <button id="generateBtn">Generate Resume</button>
+    </div>
+
+    <div id="navDots"></div>
+
+</div>
+
+<div id="resumeCont"></div>
+
+<footer>
+  <div id="bottom" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; background-color:#e4dfdfe7; padding: 2rem;">
+    
+    <div id="about" style="max-width:45%;">
+      <h3>About Ready Resume</h3>
+      <p>Ready Resume helps users build professional resumes quickly by focusing on the information recruiters value most.</p>
+    </div>
+
+    <div id="contact" style="font-weight:bold; max-width:50%;">
+      <h3>Contact Us</h3>
+      <p>Questions or need help? Email us at: <br>
+      <a href="mailto:readyresume935@gmail.com">📧 readyresume935@gmail.com</a></p>
+    </div>
+
+    <div id="copyright" style="width:100%; text-align:center; margin-top:0.5rem; font-size:0.9rem; color:#555;">
+      &copy; 2026 Ready Resume. All Rights Reserved
+    </div>
+
+    <div id="privTerm" style="width:100%; text-align:center; margin-top:0.3rem; font-size:0.85rem;">
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms of Service</a>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+const sections = document.querySelectorAll('.section');
+const dotsContainer = document.getElementById('navDots');
+let currentStep = 0;
+
+// Create nav dots
+sections.forEach((sec,index)=>{
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if(index===0) dot.classList.add('active');
+    dot.addEventListener('click',()=>showStep(index));
+    dotsContainer.appendChild(dot);
+});
+
+function updateDots(){
+    document.querySelectorAll('.dot').forEach((d,i)=>{
+        d.classList.toggle('active', i===currentStep);
+    });
+}
+
+function showStep(step){
+    sections.forEach((sec,i)=>{
+        sec.classList.toggle('active', i===step);
+    });
+    currentStep = step;
+    updateDots();
+}
+
+// Next / Back buttons
+document.querySelectorAll('.nextBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        if(currentStep<sections.length-1) showStep(currentStep+1);
+    });
+});
+document.querySelectorAll('.backBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        if(currentStep>0) showStep(currentStep-1);
+    });
+});
+
+// Person data object
+const person = {name:'',phone:'',email:'',summary:'',work:[],education:[],skills:[],langs:[],references:[]};
+
+// Generate resume
+document.getElementById('generateBtn').addEventListener('click', ()=>{
+    // Collect data
+    person.name = document.getElementById('nameInput').value;
+    person.phone = document.getElementById('phoneInput').value;
+    person.email = document.getElementById('emailInput').value;
+    person.summary = document.getElementById('summaryInput').value;
+    person.work = document.getElementById('workInput').value.split('\n').filter(Boolean);
+    person.education = document.getElementById('eduInput').value.split('\n').filter(Boolean);
+    person.skills = document.getElementById('skillInput').value.split('\n').filter(Boolean);
+    person.langs = document.getElementById('langInput').value.split('\n').filter(Boolean);
+    person.references = document.getElementById('refInput').value.split('\n').filter(Boolean);
+
+    if(!person.name || !person.email){
+        alert('Name and Email are required.');
+        showStep(0);
+        return;
+    }
+
+    document.getElementById('formContainer').style.display='none';
+    const resumeDiv = document.getElementById('resumeCont');
+    resumeDiv.style.display='block';
+    resumeDiv.innerHTML = `
+        <h1 align="middle">${person.name}</h1>
+        <p align="middle"><strong>Phone:</strong> ${person.phone}</p>
+        <p align="middle"><strong>Email:</strong> ${person.email}</p>
+        <h2>Professional Summary</h2>
+        <p>${person.summary}</p>
+        <h2>Work Experience</h2>
+        <ul>${person.work.map(w=>`<li>${w}</li>`).join('')}</ul>
+        <h2>Education</h2>
+        <ul>${person.education.map(e=>`<li>${e}</li>`).join('')}</ul>
+        <h2>Skills</h2>
+        <ul>${person.skills.map(s=>`<li>${s}</li>`).join('')}</ul>
+        <h2>Languages</h2>
+        <ul>${person.langs.map(l=>`<li>${l}</li>`).join('')}</ul>
+        <h2>References</h2>
+        <ul>${person.references.map(r=>`<li>${r}</li>`).join('')}</ul>
+        <button id="backEdit">Back to Edit</button>
+        <button id="printBtn" onclick="window.print()">Print Resume</button>
+    `;
+
+    localStorage.setItem('saved', JSON.stringify(person));
+
+    document.getElementById('backEdit').addEventListener('click', ()=>{
+        resumeDiv.style.display='none';
+        document.getElementById('formContainer').style.display='block';
+        showStep(0);
+    });
+});
+
+// Load saved data
+const saved = JSON.parse(localStorage.getItem('saved'));
+if(saved){
+    document.getElementById('nameInput').value = saved.name||'';
+    document.getElementById('phoneInput').value = saved.phone||'';
+    document.getElementById('emailInput').value = saved.email||'';
+    document.getElementById('summaryInput').value = saved.summary||'';
+    document.getElementById('workInput').value = (saved.work||[]).join('\n');
+    document.getElementById('eduInput').value = (saved.education||[]).join('\n');
+    document.getElementById('skillInput').value = (saved.skills||[]).join('\n');
+    document.getElementById('langInput').value = (saved.langs||[]).join('\n');
+    document.getElementById('refInput').value = (saved.references||[]).join('\n');
+}
+</script>
+
+</body>
+</html>

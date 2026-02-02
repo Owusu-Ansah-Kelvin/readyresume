@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build a professional resume in minutes with Ready Resume for free. Answer simple questions and get a polished CV recruiters love.">
+    <title>Ready Resume | Build a Professional Resume Online in Minutes</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+         @media (max-width: 768px) {
+      #h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        width: 100%;
+      }
+       #hamburger{
+        display: block;
+      }
+      nav ul,#mobileMenu {
+        display: none;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        margin: 1rem;
+      }
+      /* nav ul:not(.hidden){
+        display: flex;
+      } */
+
+      #content {
+        font-size: 1rem;
+        margin-top: 3rem;
+      }
+
+      #createButt {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      #bottom {
+        font-size: 0.9rem;
+      }
+     #about,#copyright{
+      max-width: 100%;
+     }
+      
+    }
+
+    @media (max-width: 480px) {
+      #h1 {
+        font-size: 1.2rem;
+      }
+
+      nav ul {
+        gap: 0.8rem;
+      }
+
+      #createButt {
+        width: 90%;
+        font-size: 0.9rem;
+      }
+
+      #content {
+        margin-top: 2rem;
+      }
+      #hamburger{
+        display: block;
+       }
+        .hidden{
+        cursor: pointer;
+        display: block;
+        transition: 0.54s ease;
+       }
+       #bottom{
+        flex-direction: column;
+        gap: 0.3rem;
+       }
+     
+    }
+        html,body{
+            padding: 0;margin: 0;height: 100%;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        main{
+            flex: 1;
+        }
+        #topInfo{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            flex-wrap: wrap;
+        }
+        #h1{
+        font-style: italic;
+        color: rgb(60, 60, 231);
+        margin: 1rem;
+        font-size: 3rem;
+        font-weight: bold;
+        }
+        ul{
+            margin-top: 2.6rem;
+            margin-right: 13rem;
+            list-style: none;
+            display: flex;
+            gap: 6rem;
+            font-size: 1.5rem;
+            font-family: sans-serif;
+            font-weight: bold;
+            flex-wrap: wrap;
+        }
+        a{
+            text-decoration: none;
+            color: #3c3ce7;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        a:hover{
+            color: #171765f6;
+        }
+        :focus { outline: 2px solid rgb(60,60,231); }
+         #topShadow{
+         /* border: 1px solid grey;    */
+         box-shadow: 1px 7px 9px 2px rgb(128, 128, 128);
+         border-radius: 5px;
+         margin: 0 1rem;
+         height: 4px;
+        }
+        #content{
+            text-align: center;
+            margin: 5rem 1rem 2rem;
+            font-size: 1.6rem;
+            font-family: cambria;
+           
+        }
+        #createButt{
+             display: inline-block;
+  text-decoration: none;
+  background-color: rgb(60,60,231);
+  color: white;
+  padding: 1.6rem;
+  border-radius: 6px;
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  height: 3rem;
+  cursor: pointer;
+        }
+        #createButt a{
+            color: white;
+        }
+        #createButt:hover{
+            background-color: rgba(32, 32, 147, 0.955);
+            transition: 0.43s ease;
+        }
+       
+#privTerm a {
+ font-size: 0.85rem;
+  text-decoration: none;
+}
+
+#privTerm a:hover{
+  text-decoration: underline;
+}
+
+       #copyright{
+        font-size: 0.9rem;
+        color: #555;
+       }
+       #hamburger{cursor: pointer;font-size: 2rem;width: 3rem;display: none;}
+      
+    </style>
+</head>
+<body>
+ 
+    <header id="topInfo">
+     <h1 id="h1">Ready Resume</h1>
+
+   
+     <nav aria-label="Main Navigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+   
+    </header>
+ 
+ <div id="topShadow"></div>
+
+ <main>
+    <section aria-label="Page Content">
+        <div id="content">
+        <p id="intro">Build a professional resume in minutes by answering simple questions recruiters care about.
+        </p>
+
+        <a role="button" id="createButt" href="/resume-builder.html" target="_blank">Create Your Resume</a>
+
+    </div>
+    </section>
+ </main>
+
+ <footer>
+  <div id="bottom" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; background-color:#e4dfdfe7; padding: 2rem;">
+    
+    <div id="about" style="max-width:45%;">
+      <h3>About Ready Resume</h3>
+      <p>Ready Resume helps users build professional resumes quickly by focusing on the information recruiters value most.</p>
+    </div>
+
+    <div id="contact" style="font-weight:bold; max-width:43%;">
+      <h3>Contact Us</h3>
+      <p>Questions or need help? Email us at: <br>
+      <a href="mailto:readyresume935@gmail.com">📧 readyresume935@gmail.com</a></p>
+    </div>
+
+    <div id="copyright" style="width:100%; text-align:center; margin-top:0.5rem; font-size:0.9rem; color:#555;">
+      &copy; 2026 Ready Resume. All Rights Reserved
+    </div>
+
+    <div id="privTerm" style="width:100%; text-align:center; margin-top:0.3rem; font-size:0.85rem;">
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms of Service</a>
+    </div>
+
+  </div>
+</footer>
+ <script>
+
+    const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("mobileMenu");
+
+ hamburger.addEventListener("click", () => {
+    menu.classList.toggle("open");
+    const expanded = menu.classList.contains("open");
+    hamburger.textContent = expanded ? "✕" : "☰";
+    hamburger.setAttribute("aria-expanded", expanded);
+});
+ </script>
+</body>
+</html>
